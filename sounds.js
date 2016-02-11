@@ -583,4 +583,74 @@
 		strName: 'triggered',
 		strFileName: 'triggered.mp3'
 	},
+	{
+		strRegex: /^(\/bot )?jonte aj$/,
+		strName: 'jonte aj',
+		strFileName: 'aj.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte driver$/,
+		strName: 'jonte driver',
+		strFileName: 'driver.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte finger$/,
+		strName: 'jonte finger',
+		strFileName: 'finger.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte flax$/,
+		strName: 'jonte flax',
+		strFileName: 'flax.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte gay$/,
+		strName: 'jonte gay',
+		strFileName: 'gay.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte hugga$/,
+		strName: 'jonte hugga',
+		strFileName: 'hugga.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte inte krallig$/,
+		strName: 'jonte inte krallig',
+		strFileName: 'intekrallig.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte käften$/,
+		strName: 'jonte käften',
+		strFileName: 'kaften.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte kontakter$/,
+		strName: 'jonte kontakter',
+		strFileName: 'kontakter.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte krallig$/,
+		strName: 'jonte krallig',
+		strFileName: 'krallig.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte röven$/,
+		strName: 'jonte röven',
+		strFileName: 'roven.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte saltis$/,
+		strName: 'jonte saltis',
+		strFileName: 'saltis.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte svart$/,
+		strName: 'jonte svart',
+		strFileName: 'svart.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?jonte svart2$/,
+		strName: 'jonte svart2',
+		strFileName: 'svart2.mp3'
+	}
 ]
