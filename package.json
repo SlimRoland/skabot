@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "A Discord bot made for SängkammarN' (SKAB)",
   "main": "index.js",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Denocle/skabot.git"
+  },
   "author": "Denocle",
   "license": "ISC",
   "dependencies": {
