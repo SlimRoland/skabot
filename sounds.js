@@ -568,4 +568,9 @@ module.exports = [
 		strName: 'eye to eye',
 		strFileName: 'eye-to-eye.mp3'
 	},
+	{
+		strRegex: /^(\/bot )?follow your dreams$/,
+		strName: 'follow your dreams',
+		strFileName: 'follow-your-dreams.mp3'
+	},
 ]
