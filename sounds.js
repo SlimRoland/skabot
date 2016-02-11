@@ -1,4 +1,4 @@
-module.exports = [
+﻿module.exports = [
 	{
 		strRegex: /^\/bot pung$|^pung$/,
 		strName: 'pung',
@@ -577,5 +577,10 @@ module.exports = [
 		strRegex: /^(\/bot )?scream$/,
 		strName: 'scream',
 		strFileName: 'scream.mp3'
+	},
+	{
+		strRegex: /^(\/bot )?triggered$/,
+		strName: 'triggered',
+		strFileName: 'triggered.mp3'
 	},
 ]
