@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Historik</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.table-compact td, .table-compact th {
+			padding: 3px 15px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		{{> menu.mustache}}
+
+		<div class="row">
+			<div class="ten columns">
+				<h3>Historik</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="twelve columns">
+				De senaste <u>100</u> händelserna.<br><br>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<table class="table-compact twelve columns">
+				<thead>
+					<tr>
+						<th>Användare</th>
+						<th>Ljud</th>
+						<th>Tid</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#arrTotalHistory}}
+						<tr>
+							<td>
+								<a href="/user/{{user_id}}">{{username}}</a>
+							</td>
+							<td>
+								{{#file_name}}
+									<a href="/stats/{{file_name}}">{{sound_name}}</a>
+								{{/file_name}}
+								{{^file_name}}
+									{{sound_name}}
+								{{/file_name}}
+							</td>
+							<td>
+								{{better_time}}
+							</td>
+						</tr>
+					{{/arrTotalHistory}}
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

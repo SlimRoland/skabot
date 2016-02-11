@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{objUserStats.username}}</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.table-compact td, .table-compact th {
+			padding: 3px 15px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		{{> menu.mustache}}
+
+		<div class="row">
+			<div class="ten columns">
+				<h3>Statistik för <u>{{objUserStats.username}}</u></h3>
+				Totala spelningar: <strong>{{objUserStats.total_plays}}</strong><br><br>
+			</div>
+			<div class="two columns">
+				<a class="button" href="/anvandartoppen">Tillbaka</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="six columns">
+				<h5>Ljudstatistik</h5>
+			</div>
+			<div class="six columns">
+				<h5>Historik</h5>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<table class="six columns">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Ljud</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#objUserStats.sound_stats}}
+						<tr>
+							<td><strong>{{place}}.</strong></td>
+							<td>
+								{{#file_name}}<a href="/stats/{{file_name}}">{{sound_name}}</a>{{/file_name}}{{^file_name}}{{sound_name}}{{/file_name}} <small><i>({{plays}} spelningar, <strong>{{play_percentage}}%</strong> av totalen)</i></small>
+							</td>
+						</tr>
+					{{/objUserStats.sound_stats}}
+				</tbody>
+			</table>
+
+			<table class="table-compact six columns">
+				<thead>
+					<tr>
+						<th>Ljud</th>
+						<th>Tid</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#objUserStats.history}}
+						<tr>
+							<td>
+								<small>
+								{{#file_name}}
+									<a href="/stats/{{file_name}}">{{sound_name}}</a>
+								{{/file_name}}
+								{{^file_name}}
+									{{sound_name}}
+								{{/file_name}}
+								</small>
+							</td>
+							<td><small>{{better_time}}</small></td>
+						</tr>
+					{{/objUserStats.history}}
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

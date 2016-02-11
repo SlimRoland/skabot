@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Användartoppen</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.play-pause {
+			padding: 5px;
+			line-height: 1;
+			height: auto;
+			margin-bottom: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		{{> menu.mustache}}
+
+		<div class="row">
+			<div class="eight columns">
+				<h3>Användartoppen</h3>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<table class="ten columns">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Användarnamn</th>
+						<th>Totala spelningar</th>
+						<th>Favoritljud</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#arrUsersStats}}
+						<tr>
+							<td><strong>{{place}}.</strong></td>
+							<td>
+								<a href="/user/{{user_id}}">{{username}}</a>
+							</td>
+							<td>
+								<strong>{{total_plays}}</strong> <small><i>(<strong>{{player_percentage}}%</strong> av alla spelningar)</small>
+							</td>
+							<td>
+								{{#top_sound.file_name}}
+									<button class="play-pause" data-id="player-{{top_sound.file_name}}">&#9658;</button>
+									<audio id="player-{{top_sound.file_name}}" src="/sound/{{top_sound.file_name}}" preload="none"></audio>
+									<a href="/stats/{{top_sound.file_name}}">{{top_sound.sound_name}}</a>
+								{{/top_sound.file_name}}
+								{{^top_sound.file_name}}
+									{{top_sound.sound_name}}
+								{{/top_sound.file_name}}
+							</td>
+						</tr>
+					{{/arrUsersStats}}
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+	<script>
+
+		var strPlayIcon = '&#9658;';
+		var strPauseIcon = '&#11035;';
+
+		var arrPlayPauseButtons = document.getElementsByClassName('play-pause');
+		for (var i = 0; i < arrPlayPauseButtons.length; i++) {
+
+			arrPlayPauseButtons[i].onclick = function() {
+
+				var elButton = this;
+				var strPlayerId = this.getAttribute('data-id');
+				var elPlayer = document.getElementById(strPlayerId);
+
+				elPlayer.addEventListener('ended', function() {
+					elButton.innerHTML = strPlayIcon;
+					this.currentTime = 0;
+				}, false);
+
+				if (elPlayer.paused) {
+					elPlayer.play();
+					this.innerHTML = strPauseIcon;
+				} else {
+					elPlayer.pause();
+					elPlayer.currentTime = 0;
+					this.innerHTML = strPlayIcon;
+				}
+			}
+
+		}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{objSoundStats.sound_name}}</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.play-pause {
+			padding: 5px;
+			line-height: 1;
+			height: auto;
+			margin-bottom: 0;
+		}
+
+		.table-compact td, .table-compact th {
+			padding: 3px 15px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		{{> menu.mustache}}
+
+		<div class="row">
+			<div class="ten columns">
+				<h3>Statistik för <u>{{objSoundStats.sound_name}}</u></h3>
+			</div>
+			<div class="two columns">
+				<a class="button" href="/topplistan">Tillbaka</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="five columns">&nbsp;</div>
+			<div class="seven columns">
+				<h5>Historik</h5>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="five columns">
+				Förhandsvisa
+				<button class="play-pause" data-id="player-{{objSoundStats.file_name}}">&#9658;</button>
+				<audio id="player-{{objSoundStats.file_name}}" src="/sound/{{objSoundStats.file_name}}" preload="none"></audio>
+				<br>
+
+				Totala spelningar: <strong>{{objSoundStats.total_plays}}</strong>
+				<br>
+				<br>
+				<table>
+					<thead>
+						<tr>
+							<th>Användarstatistik</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#objSoundStats.user_stats}}
+							<tr>
+								<td>
+									<strong>{{place}}.</strong> <a href="/user/{{user_id}}">{{username}}</a> <small><i>({{plays}} spelningar, <strong>{{player_percentage}}%</strong> av totalen)</i> {{#favorite}}<span title="Favoritljud för {{username}}">&bigstar;</span>{{/favorite}}</small>
+								</td>
+							</tr>
+						{{/objSoundStats.user_stats}}
+					</tbody>
+				</table>
+
+			</div>
+			<table class="table-compact seven columns">
+				<thead>
+					<tr>
+						<th>Användare</th>
+						<th>Tid</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#objSoundStats.history}}
+						<tr>
+							<td><small><a href="/user/{{user_id}}">{{username}}</a></small></td>
+							<td><small>{{better_time}}</small></td>
+						</tr>
+					{{/objSoundStats.history}}
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+	<script>
+
+		var strPlayIcon = '&#9658;';
+		var strPauseIcon = '&#11035;';
+
+		var arrPlayPauseButtons = document.getElementsByClassName('play-pause');
+		arrPlayPauseButtons[0].onclick = function() {
+
+			var elButton = this;
+			var strPlayerId = this.getAttribute('data-id');
+			var elPlayer = document.getElementById(strPlayerId);
+
+			elPlayer.addEventListener('ended', function() {
+				elButton.innerHTML = strPlayIcon;
+				this.currentTime = 0;
+			}, false);
+
+			if (elPlayer.paused) {
+				elPlayer.play();
+				this.innerHTML = strPauseIcon;
+			} else {
+				elPlayer.pause();
+				elPlayer.currentTime = 0;
+				this.innerHTML = strPlayIcon;
+			}
+		}
+
+	</script>
+
+</body>
+</html>
