@@ -583,4 +583,9 @@
 		strName: 'triggered',
 		strFileName: 'triggered.mp3'
 	},
+	{
+		strRegex: /^(\/bot )?kid dies$/,
+		strName: 'kid dies',
+		strFileName: 'little-kid-fucking-dies.mp3'
+	},
 ]
