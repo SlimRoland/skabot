@@ -573,5 +573,4 @@ module.exports = [
 		strName: 'follow your dreams',
 		strFileName: 'follow-your-dreams.mp3'
 	},
-	}
 ]
